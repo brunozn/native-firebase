@@ -24,6 +24,12 @@ export function Product({ data }: Props) {
       });
     }
 
+    function handleDelete(){
+      firestore().collection('products')
+      .doc(data.id)
+      .delete();
+    }
+
   return (
     <Container>
       <Info>
@@ -45,6 +51,7 @@ export function Product({ data }: Props) {
         <ButtonIcon
           icon="delete"
           color="alert"
+          onPress={handleDelete}
         />
       </Options>
     </Container>
